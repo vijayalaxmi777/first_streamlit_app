@@ -1,5 +1,6 @@
 # Reference doc - https://docs.streamlit.io/library/api-reference
 import streamlit
+import snowflake.connector
 
 streamlit.title("My Parent's New Healthy Diner")
 

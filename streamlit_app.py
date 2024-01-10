@@ -16,8 +16,14 @@ streamlit.text("🥑🍞 Avacado toast")
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-
-
+#create a repeatable code block (a function)
+def get_fruity_vice_data(fruit_choice):
+  streamlit.write('The user entered ', fruit_choice)
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  return(fruityvice_normalized)
+  
+  
 my_fruits_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 
 # Let's put a pick list here so they can pick the fruit they want to include
@@ -35,10 +41,9 @@ try:
   if not fruit_choice:
     streamlit.error('Please select a fruit to get information')
   else:
-    streamlit.write('The user entered ', fruit_choice)
-    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-    streamlit.dataframe(fruityvice_normalized)
+    back_from_fun = get_fruity_vice_data(fruit_choice)
+    streamline.dataframe(back_from_fun)
+    
 except URLError as e:
   streamlit.error()
 

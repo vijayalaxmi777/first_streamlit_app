@@ -48,7 +48,7 @@ try:
 except URLError as e:
   streamlit.error()
 
-streamlit.stop()
+
 
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 #my_cur = my_cnx.cursor()
@@ -68,7 +68,7 @@ if streamlit.button('Get Fruit Load List'):
   my_data_rows = get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
 
-
+streamlit.stop()
     
 #streamlit.dataframe(my_data_rows)
 

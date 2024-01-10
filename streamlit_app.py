@@ -6,6 +6,7 @@ import requests
 from urllib.error import URLError
 
 
+
 streamlit.title("My Parent's New Healthy Diner")
 streamlit.header("Breakfast Favorites")
 
